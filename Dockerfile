@@ -22,5 +22,8 @@ RUN npm install -g serve
 # Expose port
 EXPOSE 3000
 
-# Start the application
-CMD ["serve", "-s", "build", "-l", "3000"]
+# Set environment variable for Railway
+ENV PORT=3000
+
+# Start the application with proper host binding
+CMD ["sh", "-c", "serve -s build -l $PORT"]
