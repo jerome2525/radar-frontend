@@ -46,7 +46,8 @@ const RadarMap: React.FC = () => {
   const fetchRadarData = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/radar/latest');
+      const apiUrl = process.env.REACT_APP_API_URL || 'https://radar-backend-production-f8cb.up.railway.app';
+      const response = await axios.get(`${apiUrl}/api/radar/latest`);
       setRadarData(response.data);
       setLastUpdate(new Date().toLocaleTimeString());
       setError(null);
